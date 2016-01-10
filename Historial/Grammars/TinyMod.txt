@@ -1,0 +1,28 @@
+programa-><secuencia-sent>
+secuencia-sent-><secuencia-sent>;<sentencia>|<sentencia>
+sentencia-><sent-if>|<sent-repeat>|<sent-assign>|<sent-read>|<sent-write>|<sent-for>|<sent-switch>
+sent-if->if <exp> then <secuencia-sent> end
+sent-if->if <exp> then <secuencia-sent> else <secuencia-sent> end
+sent-repeat->repeat <secuencia-sent> until <exp>
+sent-assign-><id>:=<exp>
+sent-read->read <id>
+sent-write->write <exp>
+sent-for->for<par-abre><sent-assign>;<exp>;<sent-assign><par-cierra>{<secuencia-sent>}
+sent-switch->switch<par-abre>i<par-cierra>{<lista-case>}|switch<par-abre>i<par-cierra>{<lista-case><default>}
+lista-case-><case>|<lista-case><case>
+case->c:<sentencia>|c:{<secuencia-sent>}
+default->d:{<secuencia-sent>}|d:<sentencia>
+exp-><exp-simple><op-comparacion><exp-simple>|<exp-simple>
+exp-simple-><exp-simple><opsuma><term>|<term>
+opsuma->+|-
+op-comparacion->=
+par-abre->(
+par-cierra->)
+term-><term><opmult><factor>|<factor>
+opmult->*|/
+factor-><factor><oppot><elemento>|<elemento>
+elemento-><par-abre><exp><par-cierra>|<numero>|<id>
+oppot->^
+id->i|w|x|y|z
+numero-><numero><digito>|<digito>
+digito->0|1|2|3|4|5|6|7|8|9
